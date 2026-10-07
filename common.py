@@ -15,6 +15,18 @@ SYSTEM_PROMPT = (
     "Keep answers concise."
 )
 
+ALL_DEPARTMENTS = {"engineering", "finance", "general", "hr", "marketing"}
+ROLE_PERMISSIONS = {
+    "engineering": {"engineering", "general"},
+    "finance": {"finance", "general"},
+    "hr": {"hr", "general"},
+    "marketing": {"marketing", "general"},
+    "employee": {"general"},
+    "admin": ALL_DEPARTMENTS,
+}
+CANDIDATES = 40  # chunks fetched before filtering by department, same in the three versions
+NO_ACCESS_ANSWER = "I couldn't find anything relevant in the documents you have access to."
+
 def load_csv_rows(data_dir=DATA_DIR):
     rows = []
     for csv_path in data_dir.rglob("*.csv"):

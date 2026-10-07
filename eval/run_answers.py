@@ -8,11 +8,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import haystack_rag
 import langchain_rag
 import llamaindex_rag
+from common import ALL_DEPARTMENTS
 
 FRAMEWORKS = {
-    "llamaindex": (llamaindex_rag.ask, llamaindex_rag.get_query_engine),
+    "llamaindex": (llamaindex_rag.ask, llamaindex_rag.get_index),
     "langchain": (langchain_rag.ask, langchain_rag.get_vectorstore),
-    "haystack": (haystack_rag.ask, haystack_rag.get_pipeline),
+    "haystack": (haystack_rag.ask, haystack_rag.get_pipelines),
 }
 TESTSET = Path(__file__).parent / "testset.json"
 OUTPUT = Path(__file__).parent / "answers.json"
@@ -36,7 +37,7 @@ if __name__ == "__main__":
             if (item["id"], name) in done:
                 continue
             start = time.perf_counter()
-            result = ask(item["question"])
+            result = ask(item["question"], ALL_DEPARTMENTS)
             latency = time.perf_counter() - start
             answers.append({
                 "id": item["id"],

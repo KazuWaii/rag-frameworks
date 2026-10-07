@@ -1,17 +1,15 @@
 from dotenv import load_dotenv
 from functools import cache
 from pathlib import Path
-from common import DATA_DIR, EMBED_MODEL, EMBED_DIM, LLM_MODEL, TOP_K, SYSTEM_PROMPT, load_csv_rows
+from common import CANDIDATES, DATA_DIR, EMBED_MODEL, EMBED_DIM, LLM_MODEL, NO_ACCESS_ANSWER, TOP_K, SYSTEM_PROMPT, load_csv_rows
 
-from llama_index.core import PromptTemplate
-from llama_index.core import Settings, SimpleDirectoryReader, Document
+from llama_index.core import PromptTemplate, Settings, SimpleDirectoryReader, Document, StorageContext, VectorStoreIndex
 from llama_index.core.node_parser import MarkdownNodeParser, SentenceSplitter
 from llama_index.core.ingestion import IngestionPipeline
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.llms.groq import Groq
-from llama_index.core import StorageContext, VectorStoreIndex
 from llama_index.vector_stores.faiss import FaissVectorStore
-
+from llama_index.core.postprocessor.types import BaseNodePostprocessor
 
 import faiss
 
@@ -62,23 +60,29 @@ def create_faiss_index(nodes, embedding_size=EMBED_DIM):
     index = VectorStoreIndex(nodes, storage_context=storage_context)
     return index
 
+
+class DepartmentFilter(BaseNodePostprocessor):
+    allowed_departments: list[str]
+
+    def _postprocess_nodes(self, nodes, query_bundle=None):
+        return [n for n in nodes if n.metadata["department"] in self.allowed_departments][:TOP_K]
+    
 # Querying the index
 @cache
-def get_query_engine():
-    nodes = split_document(load_files())
-    index = create_faiss_index(nodes)
-    print(f"{len(nodes)} nodes")
-    return index.as_query_engine(similarity_top_k=TOP_K, text_qa_template=QA_TEMPLATE)
+def get_index():
+    return create_faiss_index(split_document(load_files()))
 
-def ask(question):
-    response = get_query_engine().query(question)
-    return {
-        "answer": str(response),
-        "contexts": [node.get_content() for node in response.source_nodes]
-    }
+def ask(question, allowed_departments):
+    query_engine = get_index().as_query_engine(
+        similarity_top_k=CANDIDATES, text_qa_template=QA_TEMPLATE,
+        node_postprocessors=[DepartmentFilter(allowed_departments=sorted(allowed_departments))])
+    response = query_engine.query(question)
+    if not response.source_nodes:
+        return {"answer": NO_ACCESS_ANSWER, "contexts": []}
+    return {"answer": str(response), "contexts": [n.get_content() for n in response.source_nodes]}
 
 if __name__ == "__main__":
-    result = ask("What is Aadhya Patel's salary?")
+    result = ask("What is Aadhya Patel's salary?", {"engineering"})
     print(result["answer"])
     for context in result["contexts"]:
         print("Context:", context)

@@ -257,5 +257,12 @@
     "context_recall": 1.0,
     "faithfulness": 1.0,
     "answer_accuracy": 1.0
+  },
+  {
+    "id": 17,
+    "framework": "llamaindex",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
   }
 ]

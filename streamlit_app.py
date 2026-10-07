@@ -14,7 +14,7 @@ import pandas as pd
 import streamlit as st
 from dotenv import load_dotenv
 
-from common import DATA_DIR, load_csv_rows
+from common import DATA_DIR, ROLE_PERMISSIONS, load_csv_rows
 
 # On Linux, NLTK refuses to read files that have several hard links (CWE-59 check), and uv installs
 # packages as hard links, so LlamaIndex can't read the NLTK data bundled in site-packages. With
@@ -31,11 +31,12 @@ MAX_LLM_CALLS_PER_SESSION = 30
 
 # Framework name -> (module, function that builds its index)
 FRAMEWORKS = {
-    "LlamaIndex": ("llamaindex_rag", "get_query_engine"),
+    "LlamaIndex": ("llamaindex_rag", "get_index"),
     "LangChain": ("langchain_rag", "get_vectorstore"),
-    "Haystack": ("haystack_rag", "get_pipeline"),
+    "Haystack": ("haystack_rag", "get_pipelines"),
 }
 COMPARE = "Compare all three"
+DEFAULT_ROLE = "admin"
 
 # (category, question, why it is interesting)
 SUGGESTIONS = [
@@ -59,6 +60,9 @@ HOW_IT_WORKS = """
 - The first question sent to a framework also builds its index, which takes about a minute.
 - Under each answer, *Retrieved chunks* shows the 4 chunks the framework gave the LLM and the file each
   one comes from. The *Documents* page shows the full files, to check an answer.
+- *Role* sets which departments can be searched. Each version filters chunks by department at retrieval
+  time (LangChain and Haystack with their built-in filters, LlamaIndex with a node postprocessor), so the
+  LLM never sees a chunk the role isn't allowed to read. Try a finance question as `employee`.
 """
 
 FINDINGS = """
@@ -109,12 +113,25 @@ def load_framework(name):
     return module.ask
 
 
-def run(name, question):
+def current_role():
+    return st.session_state.get("role", DEFAULT_ROLE)
+
+
+def role_selector():
+    # Shown on every page: the Documents page is filtered by role too
+    with st.sidebar:
+        roles = list(ROLE_PERMISSIONS)
+        role = st.selectbox("Role", roles, index=roles.index(DEFAULT_ROLE), key="role")
+        st.caption("Can read: " + ", ".join(sorted(ROLE_PERMISSIONS[role])))
+        st.caption("Demo only: in a real application the role comes from the login, never from a menu.")
+
+
+def run(name, question, allowed_departments):
     with st.spinner(f"{name} is answering (its first question also builds the index)..."):
         try:
             ask = load_framework(name)
             start = time.perf_counter()
-            result = ask(question)
+            result = ask(question, allowed_departments)
             result["latency_s"] = time.perf_counter() - start
         except Exception as error:  # show any framework or Groq error (e.g. quota) instead of crashing the page
             result = {"error": str(error)}
@@ -187,12 +204,14 @@ def chat_page():
             st.warning(f"This session has used its {MAX_LLM_CALLS_PER_SESSION} LLM calls.")
         else:
             st.session_state["llm_calls"] += len(names)
-            results = {name: run(name, question) for name in names}
-            st.session_state["history"].append({"question": question, "results": results})
+            role = current_role()
+            results = {name: run(name, question, ROLE_PERMISSIONS[role]) for name in names}
+            st.session_state["history"].append({"question": question, "role": role, "results": results})
 
     for entry in st.session_state["history"]:
         with st.chat_message("user"):
             st.write(entry["question"])
+            st.caption(f"Asked as {entry['role']}")
         with st.chat_message("assistant"):
             columns = st.columns(len(entry["results"]))
             for column, (name, result) in zip(columns, entry["results"].items()):
@@ -204,10 +223,13 @@ def chat_page():
 
 
 def documents_page():
+    role = current_role()
+    allowed = ROLE_PERMISSIONS[role]
     st.title("Source documents")
-    st.caption("The files the three pipelines search. Under each answer, every retrieved chunk is labelled "
-               "with the file it comes from.")
-    paths = {p.relative_to(DATA_DIR).as_posix(): p for p in sorted(DATA_DIR.rglob("*.*"))}
+    st.caption(f"The files the `{role}` role can read, i.e. what the pipelines search for this role. Under each "
+               "answer, every retrieved chunk is labelled with the file it comes from.")
+    paths = {p.relative_to(DATA_DIR).as_posix(): p for p in sorted(DATA_DIR.rglob("*.*"))
+             if p.parent.name in allowed}
     path = paths[st.selectbox("Document", list(paths))]
     st.download_button("Download", path.read_bytes(), file_name=path.name)
     if path.suffix == ".csv":
@@ -220,6 +242,7 @@ def documents_page():
 st.set_page_config(page_title="RAG frameworks comparison", layout="wide")
 load_groq_key()
 if st.session_state.get("authenticated"):
+    role_selector()
     st.navigation([
         st.Page(chat_page, title="Ask", url_path="ask", default=True),
         st.Page(documents_page, title="Documents", url_path="documents"),

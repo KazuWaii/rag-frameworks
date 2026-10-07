@@ -11,7 +11,7 @@ from langchain_groq import ChatGroq
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_text_splitters import MarkdownHeaderTextSplitter, RecursiveCharacterTextSplitter
 
-from common import DATA_DIR, EMBED_MODEL, LLM_MODEL, TOP_K, SYSTEM_PROMPT, load_csv_rows
+from common import CANDIDATES, DATA_DIR, EMBED_MODEL, LLM_MODEL, NO_ACCESS_ANSWER, TOP_K, SYSTEM_PROMPT, load_csv_rows
 
 # Configuration
 load_dotenv()
@@ -63,8 +63,11 @@ PROMPT = ChatPromptTemplate.from_template(
 )
 chain = PROMPT | llm | StrOutputParser()
 
-def ask(question):
-    docs = get_vectorstore().similarity_search(question, k=TOP_K)
+def ask(question, allowed_departments):
+    docs = get_vectorstore().similarity_search(question, k=TOP_K, fetch_k=CANDIDATES, filter=lambda metadata: metadata["department"] in allowed_departments)
+    if not docs:
+        return {"answer": NO_ACCESS_ANSWER, "contexts": []}
+    
     context = "\n\n".join(doc.page_content for doc in docs)
     answer = chain.invoke({"context": context, "question": question})
     return {"answer": answer, "contexts": [doc.page_content for doc in docs]}

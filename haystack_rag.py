@@ -14,7 +14,7 @@ from haystack_integrations.components.embedders.sentence_transformers import (
 from haystack_integrations.components.retrievers.faiss import FAISSEmbeddingRetriever
 from haystack_integrations.document_stores.faiss import FAISSDocumentStore
 
-from common import DATA_DIR, EMBED_MODEL, EMBED_DIM, LLM_MODEL, TOP_K, SYSTEM_PROMPT, load_csv_rows
+from common import DATA_DIR, EMBED_MODEL, EMBED_DIM, LLM_MODEL, NO_ACCESS_ANSWER, TOP_K, SYSTEM_PROMPT, load_csv_rows
 
 # Configuration
 load_dotenv()
@@ -58,34 +58,35 @@ PROMPT_TEMPLATE = [ChatMessage.from_user(
 )]
 
 @cache
-def get_pipeline():
+def get_pipelines():
     store = build_document_store(load_files())
 
-    rag = Pipeline()
-    rag.add_component("text_embedder", SentenceTransformersTextEmbedder(model=EMBED_MODEL))
-    rag.add_component("retriever", FAISSEmbeddingRetriever(document_store=store, top_k=TOP_K))
-    rag.add_component("prompt_builder", ChatPromptBuilder(template=PROMPT_TEMPLATE))
-    rag.add_component("llm", OpenAIChatGenerator(
+    retrieval = Pipeline()
+    retrieval.add_component("text_embedder", SentenceTransformersTextEmbedder(model=EMBED_MODEL))
+    retrieval.add_component("retriever", FAISSEmbeddingRetriever(document_store=store, top_k=TOP_K))
+    retrieval.connect("text_embedder.embedding", "retriever.query_embedding")
+
+    generation = Pipeline()
+    generation.add_component("prompt_builder", ChatPromptBuilder(template=PROMPT_TEMPLATE))
+    generation.add_component("llm", OpenAIChatGenerator(
         api_key=Secret.from_env_var("GROQ_API_KEY"),
         api_base_url="https://api.groq.com/openai/v1",
         model=LLM_MODEL))
+    generation.connect("prompt_builder.prompt", "llm.messages")
+    return retrieval, generation
 
-    rag.connect("text_embedder.embedding", "retriever.query_embedding")
-    rag.connect("retriever.documents", "prompt_builder.documents")
-    rag.connect("prompt_builder.prompt", "llm.messages")
-    return rag
-
-def ask(question):
-    result = get_pipeline().run(
-        {"text_embedder": {"text": question}, "prompt_builder": {"question": question}},
-        include_outputs_from={"retriever"})
-    return {
-        "answer": result["llm"]["replies"][0].text,
-        "contexts": [doc.content for doc in result["retriever"]["documents"]],
-    }
+def ask(question, allowed_departments):
+    retrieval, generation = get_pipelines()
+    filters = {"field": "meta.department", "operator": "in", "value": sorted(allowed_departments)}
+    documents = retrieval.run({"text_embedder": {"text": question},
+                               "retriever": {"filters": filters}})["retriever"]["documents"]
+    if not documents:
+        return {"answer": NO_ACCESS_ANSWER, "contexts": []}
+    result = generation.run({"prompt_builder": {"documents": documents, "question": question}})
+    return {"answer": result["llm"]["replies"][0].text, "contexts": [d.content for d in documents]}
 
 if __name__ == "__main__":
-    result = ask("What is Aadhya Patel's salary?")
+    result = ask("What is Aadhya Patel's salary?", {"engineering"})
     print(result["answer"])
     for context in result["contexts"]:
         print("Context:", context)
