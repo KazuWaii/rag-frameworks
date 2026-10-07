@@ -6,10 +6,22 @@ Run locally:
 import hmac
 import importlib
 import os
+import re
 import time
+from pathlib import Path
 
+import pandas as pd
 import streamlit as st
 from dotenv import load_dotenv
+
+from common import DATA_DIR, load_csv_rows
+
+# On Linux, NLTK refuses to read files that have several hard links (CWE-59 check), and uv installs
+# packages as hard links, so LlamaIndex can't read the NLTK data bundled in site-packages. With
+# NLTK_DATA pointing at a normal folder, LlamaIndex and Haystack download their NLTK data there instead.
+NLTK_DATA_DIR = Path.home() / "nltk_data"
+NLTK_DATA_DIR.mkdir(exist_ok=True)
+os.environ.setdefault("NLTK_DATA", str(NLTK_DATA_DIR))
 
 # Demo account, shown on the login screen on purpose: it only keeps crawlers away.
 # What actually protects the Groq quota is the per-session limit on LLM calls.
@@ -45,7 +57,8 @@ HOW_IT_WORKS = """
 - Same data, embedding model (`all-MiniLM-L6-v2`), FAISS exact index, top 4 chunks, prompt and LLM
   (Groq `gpt-oss-20b`) in all three versions: only the framework changes.
 - The first question sent to a framework also builds its index, which takes about a minute.
-- Under each answer, *Retrieved chunks* shows the 4 chunks the framework gave the LLM.
+- Under each answer, *Retrieved chunks* shows the 4 chunks the framework gave the LLM and the file each
+  one comes from. The *Documents* page shows the full files, to check an answer.
 """
 
 FINDINGS = """
@@ -64,6 +77,27 @@ def load_groq_key():
     if "GROQ_API_KEY" not in os.environ:
         st.error("GROQ_API_KEY is missing: add it to `.env` (local) or to the app's secrets (Streamlit Cloud).")
         st.stop()
+
+
+def normalize(text):
+    return re.sub(r"\s+", " ", text).strip()
+
+
+@st.cache_resource(show_spinner=False)
+def document_texts():
+    # Whitespace-normalized text of each source file, to trace a retrieved chunk back to its file
+    texts = {p.relative_to(DATA_DIR).as_posix(): normalize(p.read_text(encoding="utf-8"))
+             for p in DATA_DIR.rglob("*.md")}
+    for text, meta in load_csv_rows(DATA_DIR):  # CSV rows are indexed as "column : value" text, not raw lines
+        name = f"{meta['department']}/{meta['file_name']}"
+        texts[name] = texts.get(name, "") + " " + normalize(text)
+    return texts
+
+
+def source_of(chunk):
+    start = normalize(chunk)[:100]
+    matches = [name for name, text in document_texts().items() if start in text]
+    return matches[0] if len(matches) == 1 else None
 
 
 @st.cache_resource(show_spinner=False)
@@ -113,7 +147,8 @@ def show_result(name, result):
     st.markdown(result["answer"].replace("$", "\\$"))  # "$" would otherwise start a LaTeX formula
     with st.expander("Retrieved chunks"):
         for i, context in enumerate(result["contexts"], 1):
-            st.caption(f"Chunk {i}")
+            source = source_of(context)
+            st.caption(f"Chunk {i} · {source}" if source else f"Chunk {i}")
             st.text(context)
 
 
@@ -133,7 +168,8 @@ def chat_page():
             st.rerun()
 
     st.title("Ask FinSolve's documents")
-    st.caption("Employee records, finance and marketing reports, engineering documentation and the employee handbook.")
+    st.caption("Employee records, finance and marketing reports, engineering documentation and the employee "
+               "handbook. Check any answer against the full files on the Documents page.")
 
     question = None
     with st.expander("Suggested questions", expanded=not st.session_state["history"]):
@@ -167,9 +203,26 @@ def chat_page():
     calls_left.caption(f"LLM calls left in this session: {remaining} (comparing uses 3)")
 
 
+def documents_page():
+    st.title("Source documents")
+    st.caption("The files the three pipelines search. Under each answer, every retrieved chunk is labelled "
+               "with the file it comes from.")
+    paths = {p.relative_to(DATA_DIR).as_posix(): p for p in sorted(DATA_DIR.rglob("*.*"))}
+    path = paths[st.selectbox("Document", list(paths))]
+    st.download_button("Download", path.read_bytes(), file_name=path.name)
+    if path.suffix == ".csv":
+        st.caption("Use the search icon at the top right of the table to find an employee.")
+        st.dataframe(pd.read_csv(path), hide_index=True)
+    else:
+        st.markdown(path.read_text(encoding="utf-8").replace("$", "\\$"))
+
+
 st.set_page_config(page_title="RAG frameworks comparison", layout="wide")
 load_groq_key()
 if st.session_state.get("authenticated"):
-    chat_page()
+    st.navigation([
+        st.Page(chat_page, title="Ask", url_path="ask", default=True),
+        st.Page(documents_page, title="Documents", url_path="documents"),
+    ], position="top").run()
 else:
     login_page()

@@ -42,7 +42,8 @@ These are observations from one question and one run per framework, to be confir
 ## Web demo
 
 `streamlit_app.py` asks one framework, or all three side by side, and shows each answer with the 4 chunks it was
-built from. Demo account: `demo` / `finsolve`. Each session is limited to 30 LLM calls to protect the Groq quota.
+built from, each labelled with its source file. The *Documents* page shows the full source files, to check an answer.
+Demo account: `demo` / `finsolve`. Each session is limited to 30 LLM calls to protect the Groq quota.
 
 Run it locally (needs `GROQ_API_KEY` in `.env`):
 
