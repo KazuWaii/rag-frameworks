@@ -1,0 +1,38 @@
+[project]
+name = "rag-frameworks"
+version = "0.1.0"
+description = "The same RAG pipeline built with LlamaIndex, LangChain and Haystack, then compared"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "faiss-cpu>=1.15.1",
+    "faiss-haystack>=2.1.0",
+    "groq>=0.37.1",
+    "haystack-ai>=3.3.0",
+    "langchain>=1",
+    "langchain-community>=0.4",
+    "langchain-groq>=1",
+    "langchain-huggingface>=1",
+    "langchain-text-splitters>=1",
+    "llama-index-core>=0.14.25",
+    "llama-index-embeddings-huggingface>=0.8.0",
+    "llama-index-llms-groq>=0.6.1",
+    "llama-index-vector-stores-faiss>=0.7.0",
+    "pandas>=2.3.3",
+    "python-dotenv>=1.2.4",
+    "sentence-transformers>=6.1.0",
+    "sentence-transformers-haystack>=0.2.0",
+    "streamlit>=1.65.0",
+    "torch>=2.14.1",
+]
+
+# The embedding model only ever runs on CPU, but torch's default PyPI wheel on
+# Linux (Streamlit Community Cloud) pulls in several GB of NVIDIA CUDA packages.
+# torch is listed above only so that this CPU-only index applies to it.
+[tool.uv.sources]
+torch = [{ index = "pytorch-cpu" }]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true

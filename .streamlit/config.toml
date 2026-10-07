@@ -1,0 +1,5 @@
+[server]
+# Streamlit's file watcher inspects every imported module; with transformers'
+# lazily imported submodules this floods the logs with errors (and serves no
+# purpose in production).
+fileWatcherType = "none"

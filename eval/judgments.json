@@ -1,0 +1,489 @@
+[
+  {
+    "id": 0,
+    "framework": "llamaindex",
+    "correctness": "correct",
+    "correctness_reason": "The answer matches the reference answer exactly.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 1,
+    "framework": "llamaindex",
+    "correctness": "incorrect",
+    "correctness_reason": "The answer did not provide the changes made in version 1.1, which are 'Updated diagrams and monitoring section'.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 2,
+    "framework": "llamaindex",
+    "correctness": "correct",
+    "correctness_reason": "The answer lists all incident classification levels and definitions exactly as in the reference answer.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 3,
+    "framework": "llamaindex",
+    "correctness": "correct",
+    "correctness_reason": "The answer matches the reference answer exactly.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 4,
+    "framework": "llamaindex",
+    "correctness": "incorrect",
+    "correctness_reason": "The answer states $450 million and 18% YoY, which does not match the reference $300 million and 10% YoY.",
+    "faithful": false,
+    "unsupported_claims": [
+      "Q4 2024"
+    ]
+  },
+  {
+    "id": 5,
+    "framework": "llamaindex",
+    "correctness": "correct",
+    "correctness_reason": "The answer matches the reference answer of $2.6 billion for Q4 2024 revenue.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 6,
+    "framework": "llamaindex",
+    "correctness": "correct",
+    "correctness_reason": "The answer includes all three reference points—record‑breaking revenue, improved margins, and strong cash flow—plus supported details.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 7,
+    "framework": "llamaindex",
+    "correctness": "correct",
+    "correctness_reason": "The answer includes developing a plan to review contracts and negotiate prices, matching the reference.",
+    "faithful": false,
+    "unsupported_claims": [
+      "Continuously monitoring market conditions and adjusting procurement tactics accordingly"
+    ]
+  },
+  {
+    "id": 8,
+    "framework": "llamaindex",
+    "correctness": "correct",
+    "correctness_reason": "The answer matches the reference stating reimbursement is processed with the next payroll cycle.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 9,
+    "framework": "llamaindex",
+    "correctness": "correct",
+    "correctness_reason": "The answer matches the reference answer of Induction Training.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 10,
+    "framework": "llamaindex",
+    "correctness": "correct",
+    "correctness_reason": "The answer matches the referenced code",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 11,
+    "framework": "llamaindex",
+    "correctness": "correct",
+    "correctness_reason": "The answer lists exactly the core values from the reference",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 12,
+    "framework": "llamaindex",
+    "correctness": "correct",
+    "correctness_reason": "The answer lists both leave balances (18 and 6) as in the reference answer.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 13,
+    "framework": "llamaindex",
+    "correctness": "partial",
+    "correctness_reason": "The answer lists two of the three possible leave balances (24 and 21) but omits the third (0) from the reference answer.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 14,
+    "framework": "llamaindex",
+    "correctness": "correct",
+    "correctness_reason": "The answer correctly states the leave balance of Aadhya Saxena as 21.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 15,
+    "framework": "llamaindex",
+    "correctness": "correct",
+    "correctness_reason": "The answer lists both leave counts (21 and 5) matching the reference answer",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 16,
+    "framework": "llamaindex",
+    "correctness": "correct",
+    "correctness_reason": "The answer lists the United Kingdom, Germany, and France, matching the reference answer.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 17,
+    "framework": "llamaindex",
+    "correctness": "correct",
+    "correctness_reason": "The answer matches the reference answer of a 10% ad spend increase for France in Q2 2024.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 18,
+    "framework": "llamaindex",
+    "correctness": "correct",
+    "correctness_reason": "The answer lists the three initiatives specified in the reference answer.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 19,
+    "framework": "llamaindex",
+    "correctness": "correct",
+    "correctness_reason": "The answer matches the reference answer of 25 regional influencers.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 0,
+    "framework": "langchain",
+    "correctness": "correct",
+    "correctness_reason": "The answer exactly matches the reference answer.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 1,
+    "framework": "langchain",
+    "correctness": "correct",
+    "correctness_reason": "The answer exactly matches the reference answer’s stated changes for version 1.1.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 2,
+    "framework": "langchain",
+    "correctness": "correct",
+    "correctness_reason": "The answer exactly matches the reference incident classification levels and definitions.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 3,
+    "framework": "langchain",
+    "correctness": "correct",
+    "correctness_reason": "The answer exactly matches the reference stating that data at rest uses AES‑256 encryption via AWS KMS.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 4,
+    "framework": "langchain",
+    "correctness": "correct",
+    "correctness_reason": "The answer matches the reference answer exactly",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 5,
+    "framework": "langchain",
+    "correctness": "correct",
+    "correctness_reason": "The answer matches the Q4 revenue of $2.6 billion stated in the context.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 6,
+    "framework": "langchain",
+    "correctness": "correct",
+    "correctness_reason": "The answer includes record‑breaking revenue, improved margins, and strong cash flow as in the reference and adds accurate supporting details.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 7,
+    "framework": "langchain",
+    "correctness": "correct",
+    "correctness_reason": "Answer includes renegotiating contracts as in the reference and adds additional valid mitigation measures",
+    "faithful": false,
+    "unsupported_claims": [
+      "Consolidating vendors – reduce the number of providers to achieve volume discounts",
+      "Exploring alternative suppliers or in‑house solutions – replace costly vendors with lower‑cost or internal options"
+    ]
+  },
+  {
+    "id": 8,
+    "framework": "langchain",
+    "correctness": "correct",
+    "correctness_reason": "The answer matches the reference stating reimbursement is processed with the next payroll cycle.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 9,
+    "framework": "langchain",
+    "correctness": "correct",
+    "correctness_reason": "The answer correctly identifies Induction Training as the mandatory program for new hires.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 10,
+    "framework": "langchain",
+    "correctness": "correct",
+    "correctness_reason": "The answer exactly matches the reference answer.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 11,
+    "framework": "langchain",
+    "correctness": "correct",
+    "correctness_reason": "The answer lists exactly the five core values from the reference",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 12,
+    "framework": "langchain",
+    "correctness": "correct",
+    "correctness_reason": "The answer lists both possible leave balances (6 and 18) matching the reference answer",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 13,
+    "framework": "langchain",
+    "correctness": "correct",
+    "correctness_reason": "The answer lists all three leave balances (24, 21, 0) matching the reference answer.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 14,
+    "framework": "langchain",
+    "correctness": "correct",
+    "correctness_reason": "The answer correctly states Aadhya Saxena's leave balance as 21, matching the reference answer.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 15,
+    "framework": "langchain",
+    "correctness": "correct",
+    "correctness_reason": "The answer lists both possible leave counts (21 and 5) matching the reference answer and covers all relevant records.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 16,
+    "framework": "langchain",
+    "correctness": "correct",
+    "correctness_reason": "The answer lists the United Kingdom, Germany, and France, matching the reference answer and the retrieved context.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 17,
+    "framework": "langchain",
+    "correctness": "correct",
+    "correctness_reason": "The answer matches the reference stating a 10% increase in ad spend for France in Q2 2024.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 18,
+    "framework": "langchain",
+    "correctness": "correct",
+    "correctness_reason": "The answer lists the three initiatives exactly as in the reference answer.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 19,
+    "framework": "langchain",
+    "correctness": "correct",
+    "correctness_reason": "The answer matches the reference number of 25 influencers",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 0,
+    "framework": "haystack",
+    "correctness": "correct",
+    "correctness_reason": "The answer matches the reference stating Multi-Availability Zone deployments.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 1,
+    "framework": "haystack",
+    "correctness": "correct",
+    "correctness_reason": "The answer matches the reference change description exactly.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 2,
+    "framework": "haystack",
+    "correctness": "correct",
+    "correctness_reason": "The answer accurately lists all incident classification levels and their definitions as provided in the reference answer.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 3,
+    "framework": "haystack",
+    "correctness": "correct",
+    "correctness_reason": "Matches the referenced encryption method for data at rest (AES‑256 encryption using AWS KMS).",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 4,
+    "framework": "haystack",
+    "correctness": "correct",
+    "correctness_reason": "The answer matches the reference answer exactly.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 5,
+    "framework": "haystack",
+    "correctness": "correct",
+    "correctness_reason": "The answer matches the reference and the retrieved context stating Q4 revenue was $2.6 billion.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 6,
+    "framework": "haystack",
+    "correctness": "correct",
+    "correctness_reason": "The answer includes record‑breaking revenue, improved margins, and strong cash flow as stated in the reference, with additional accurate details.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 7,
+    "framework": "haystack",
+    "correctness": "correct",
+    "correctness_reason": "The answer matches the reference by recommending a vendor risk‑management plan with regular contract reviews and price negotiations, adding supported details.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 8,
+    "framework": "haystack",
+    "correctness": "correct",
+    "correctness_reason": "The answer matches the reference that reimbursement is processed with the next payroll cycle.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 9,
+    "framework": "haystack",
+    "correctness": "correct",
+    "correctness_reason": "The answer correctly states that Induction Training is mandatory for new hires.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 10,
+    "framework": "haystack",
+    "correctness": "correct",
+    "correctness_reason": "The answer matches the reference answer exactly.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 11,
+    "framework": "haystack",
+    "correctness": "correct",
+    "correctness_reason": "The answer lists exactly the core values given in the reference answer",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 12,
+    "framework": "haystack",
+    "correctness": "correct",
+    "correctness_reason": "The answer lists both leave balances 6 and 18 matching the reference answer",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 13,
+    "framework": "haystack",
+    "correctness": "correct",
+    "correctness_reason": "The answer lists all three possible leave balances (24, 21, 0) matching the reference answer.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 14,
+    "framework": "haystack",
+    "correctness": "correct",
+    "correctness_reason": "The answer correctly states Aadhya Saxena's leave balance as 21, matching the reference and context.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 15,
+    "framework": "haystack",
+    "correctness": "correct",
+    "correctness_reason": "The answer lists both possible leave counts (21 and 5) matching the reference answer.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 16,
+    "framework": "haystack",
+    "correctness": "correct",
+    "correctness_reason": "The answer lists the United Kingdom, Germany, and France, matching the reference answer.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 17,
+    "framework": "haystack",
+    "correctness": "correct",
+    "correctness_reason": "The answer matches the reference answer of a 10% ad spend increase for France in Q2 2024.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 18,
+    "framework": "haystack",
+    "correctness": "correct",
+    "correctness_reason": "The answer lists the same three initiatives as the reference answer.",
+    "faithful": true,
+    "unsupported_claims": []
+  },
+  {
+    "id": 19,
+    "framework": "haystack",
+    "correctness": "correct",
+    "correctness_reason": "The answer matches the reference answer of 25.",
+    "faithful": true,
+    "unsupported_claims": []
+  }
+]

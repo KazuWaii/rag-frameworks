@@ -1,0 +1,162 @@
+[
+  {
+    "id": 0,
+    "department": "engineering",
+    "file_name": "engineering_master_doc.md",
+    "question": "What type of AWS deployment is used to achieve high availability according to the guidelines?",
+    "reference_answer": "Multi-Availability Zone (AZ) deployments in AWS regions.",
+    "reference_context": "### 2.5 Resilience and Fault Tolerance  \n#### 2.5.1 High Availability\n* Multi-Availability Zone (AZ) deployments in AWS regions.\n* Active-active configurations for critical services.\n* Database replication with automated failover capabilities.\n* Global load balancing for geographic redundancy."
+  },
+  {
+    "id": 1,
+    "department": "engineering",
+    "file_name": "engineering_master_doc.md",
+    "question": "What changes were made in version 1.1?",
+    "reference_answer": "Updated diagrams and monitoring section",
+    "reference_context": "### 1.4 Document Control  \n| Version | Date | Author | Changes |\n|---------|------|--------|---------|\n| 1.0 | 2025-05-01 | Engineering Team | Initial version |\n| 1.1 | 2025-05-14 | Tech Architecture Council | Updated diagrams and monitoring section |"
+  },
+  {
+    "id": 2,
+    "department": "engineering",
+    "file_name": "engineering_master_doc.md",
+    "question": "What are the incident classification levels and their definitions?",
+    "reference_answer": "P0: Critical (data breach, service outage); P1: High (potential breach, significant impact); P2: Medium (limited impact); P3: Low (minimal impact).",
+    "reference_context": "#### 5.3.2 Incident Response\n* **Security Operations Center (SOC)**:\n* 24/7 monitoring via Splunk\n* Automated alerts based on MITRE ATT&CK framework\n* Threat intelligence integration\n* **Incident Classification**:\n* P0: Critical (data breach, service outage)\n* P1: High (potential breach, significant impact)\n* P2: Medium (limited impact)\n* P3: Low (minimal impact)\n* **Response Procedure**:\n* Identification and containment\n* Evidence collection\n* Remediation and recovery\n* Post-incident analysis and lessons learned"
+  },
+  {
+    "id": 3,
+    "department": "engineering",
+    "file_name": "engineering_master_doc.md",
+    "question": "What encryption method is used for data at rest?",
+    "reference_answer": "AES-256 encryption using AWS KMS",
+    "reference_context": "#### 5.1.2 Data Protection\n* **Encryption**:\n* Data in transit: TLS 1.3 for all communications\n* Data at rest: AES-256 encryption using AWS KMS\n* Field-level encryption for PII and financial data\n* Database column-level encryption for sensitive fields\n* **Data Classification**:\n* Level 1: Public data\n* Level 2: Internal use only\n* Level 3: Confidential (PII, account data)\n* Level 4: Restricted (payment credentials, authentication tokens)"
+  },
+  {
+    "id": 4,
+    "department": "finance",
+    "file_name": "quarterly_financial_report.md",
+    "question": "What was FinSolve Technologies' cash flow from operations and its year‑over‑year change?",
+    "reference_answer": "$300 million, up 10% YoY.",
+    "reference_context": "### Cash Flow Analysis\nCash flow performance underscored FinSolve Technologies’s financial health:  \n- **Cash Flow from Operations**: $300 million, up 10% YoY, driven by strong revenue and efficient working capital management.\n- **Cash Flow from Investing**: $50 million, allocated to research and development (R&D) and market expansion initiatives.\n- **Cash Flow from Financing**: $20 million, reflecting net inflows for working capital optimization."
+  },
+  {
+    "id": 5,
+    "department": "finance",
+    "file_name": "quarterly_financial_report.md",
+    "question": "What was FinSolve Technologies' revenue in the fourth quarter of 2024?",
+    "reference_answer": "$2.6 billion",
+    "reference_context": "# Quarterly Financial Report - FinSolve Technologies Inc. 2024  \n## Executive Summary\nIn 2024, FinSolve Technologies Inc. delivered exceptional financial performance, achieving significant year-over-year (YoY) growth across all quarters. With a strategic focus on market expansion, customer acquisition, and operational efficiency, the company saw revenue increase from $2.1 billion in Q1 to $2.6 billion in Q4, alongside consistent improvements in gross margin, operating income, and net income. This report provides a comprehensive overview of FinSolve Technologies’s financial results, expense breakdowns, cash flow analyses, and risk mitigation strategies for each quarter of 2024, underscoring our commitment to sustainable growth and shareholder value.  \n---"
+  },
+  {
+    "id": 6,
+    "department": "finance",
+    "file_name": "quarterly_financial_report.md",
+    "question": "What financial achievements did FinSolve Technologies Inc. report for 2024?",
+    "reference_answer": "Record-breaking revenue, improved margins, and strong cash flow.",
+    "reference_context": "## Conclusion\nFinSolve Technologies Inc.’s 2024 performance reflects our strategic focus on growth, efficiency, and customer-centric innovation. With record-breaking revenue, improved margins, and strong cash flow, we are well-positioned to capitalize on global opportunities in 2025. This report highlights our commitment to delivering value to stakeholders while navigating market challenges with agility and foresight."
+  },
+  {
+    "id": 7,
+    "department": "finance",
+    "file_name": "financial_summary.md",
+    "question": "How can FinSolve Technologies mitigate the risk of vendor cost inflation?",
+    "reference_answer": "By developing a vendor risk management plan that regularly reviews contracts and negotiates prices.",
+    "reference_context": "2. **Automation in Vendor Payments**: Automating the accounts payable process will reduce human errors, speed up payments, and help reduce overdue payments, which will positively impact cash flow.\n3. **Employee Cost Optimization**: As the headcount grows, consider introducing more flexible benefits packages and using technology to reduce HR administrative costs.\n4. **Cost-Cutting in Non-Core Activities**: Explore opportunities to reduce expenses in non-essential categories, including travel and certain office-related costs.  \nRisk Analysis and Mitigation Strategies:\n-------------------------------------------\n1. **Risk: Vendor Cost Inflation** – Vendor services, particularly marketing and software subscriptions, have shown significant price inflation. To mitigate this, a comprehensive **vendor risk management** plan should be developed, ensuring that contracts are regularly reviewed, and prices negotiated.  \n2. **Risk: Cash Flow Volatility** – Delays in receivables and vendor payment cycles may lead to short-term cash flow volatility. **Improved working capital management** and streamlining payment processes can significantly reduce this risk.  \n3. **Risk: Operational Scalability** – As FinSolve Technologies scales, maintaining operational efficiency will become more challenging. This can be mitigated by investing in automation, streamlining workflows, and maintaining a leaner organizational structure.  \n4. **Risk: Regulatory Compliance** – As the company expands globally, navigating complex regulatory landscapes in different regions may introduce compliance risks. FinSolve Technologies must invest in **legal and compliance teams** to ensure adherence to local laws and regulations.  \nAppendices:\n-------------------------------------------\nDetailed tables and charts are available in the financial statements section of the main report, showcasing YoY comparisons, expense breakdowns, and key ratios."
+  },
+  {
+    "id": 8,
+    "department": "general",
+    "file_name": "employee_handbook.md",
+    "question": "When will my reimbursement be processed after a claim is approved?",
+    "reference_answer": "With the next payroll cycle.",
+    "reference_context": "### Claim Process\n1. Submit expense claims via HRMS with original bills within 30 days of incurring the expense.\n2. Claims reviewed and approved by reporting manager.\n3. Reimbursement processed with the next payroll cycle."
+  },
+  {
+    "id": 9,
+    "department": "general",
+    "file_name": "employee_handbook.md",
+    "question": "What training program is mandatory for new hires?",
+    "reference_answer": "Induction Training",
+    "reference_context": "## Training & Development  \n### Training Programs\n- **Induction Training**: Mandatory for new hires.\n- **Technical Training**: Regular upskilling in core technologies/tools.\n- **Soft Skills Workshops**: Communication, leadership, time management."
+  },
+  {
+    "id": 10,
+    "department": "general",
+    "file_name": "employee_handbook.md",
+    "question": "What code must employees comply with according to the Workplace Safety Guidelines?",
+    "reference_answer": "Occupational Safety, Health, and Working Conditions Code, 2020.",
+    "reference_context": "## Health & Safety  \n### Workplace Safety Guidelines\n- Comply with the Occupational Safety, Health, and Working Conditions Code, 2020.\n- Mandatory safety training for all employees.\n- Use personal protective equipment (PPE) where required."
+  },
+  {
+    "id": 11,
+    "department": "general",
+    "file_name": "employee_handbook.md",
+    "question": "What are the company's core values?",
+    "reference_answer": "Integrity, Respect, Innovation, Customer Focus, Accountability",
+    "reference_context": "### Core Values\n- **Integrity**: We act with honesty and transparency.\n- **Respect**: We value diversity and treat everyone with dignity.\n- **Innovation**: We encourage creativity and continuous improvement.\n- **Customer Focus**: Our customers are at the heart of everything we do.\n- **Accountability**: We take responsibility for our actions and results."
+  },
+  {
+    "id": 12,
+    "department": "hr",
+    "file_name": "hr_data.csv",
+    "question": "What is the leave balance for Ananya Khan?",
+    "reference_answer": "6 or 18",
+    "reference_context": "employee_id : FINEMP1075; full_name : Ananya Khan; role : QA Engineer; department : Quality Assurance; email : ananya.khan@fintechco.com; location : Mumbai; date_of_birth : 1994-03-30; date_of_joining : 2019-05-14; manager_id : FINEMP1009; salary : 687174.91; leave_balance : 6; leaves_taken : 4; attendance_pct : 87.01; performance_rating : 5; last_review_date : 2025-04-27"
+  },
+  {
+    "id": 13,
+    "department": "hr",
+    "file_name": "hr_data.csv",
+    "question": "What is Ishaan Singh's current leave balance?",
+    "reference_answer": "24, 0 or 21",
+    "reference_context": "employee_id : FINEMP1054; full_name : Ishaan Singh; role : Data Scientist; department : Data; email : ishaan.singh@fintechco.com; location : Delhi; date_of_birth : 1975-05-28; date_of_joining : 2019-10-12; manager_id : FINEMP1004; salary : 1675521.46; leave_balance : 21; leaves_taken : 4; attendance_pct : 84.17; performance_rating : 1; last_review_date : 2024-06-21"
+  },
+  {
+    "id": 14,
+    "department": "hr",
+    "file_name": "hr_data.csv",
+    "question": "What is Aadhya Saxena's leave balance?",
+    "reference_answer": "21",
+    "reference_context": "employee_id : FINEMP1004; full_name : Aadhya Saxena; role : Marketing Manager; department : Marketing; email : aadhya.saxena@fintechco.com; location : Lucknow; date_of_birth : 1986-03-31; date_of_joining : 2022-12-20; manager_id : FINEMP1008; salary : 1922205.04; leave_balance : 21; leaves_taken : 10; attendance_pct : 86.03; performance_rating : 3; last_review_date : 2024-01-12"
+  },
+  {
+    "id": 15,
+    "department": "hr",
+    "file_name": "hr_data.csv",
+    "question": "How many leaves has Krishna Malhotra taken?",
+    "reference_answer": "5 or 21",
+    "reference_context": "employee_id : FINEMP1003; full_name : Krishna Malhotra; role : Business Analyst; department : Business; email : krishna.malhotra@fintechco.com; location : Pune; date_of_birth : 1984-12-20; date_of_joining : 2018-06-10; manager_id : FINEMP1003; salary : 519865.26; leave_balance : 12; leaves_taken : 5; attendance_pct : 84.34; performance_rating : 1; last_review_date : 2024-07-24"
+  },
+  {
+    "id": 16,
+    "department": "marketing",
+    "file_name": "marketing_report_q1_2024.md",
+    "question": "Which European countries did FinNova target for market entry in Q1 2024?",
+    "reference_answer": "The United Kingdom, Germany, and France.",
+    "reference_context": "## Q1 - Marketing Overview\nIn Q1 2024, FinNova prioritized establishing a scalable framework for growth, with a focus on strengthening customer acquisition channels and enhancing brand visibility. Key initiatives included:  \n- **European Market Entry**: Launched targeted campaigns in the UK, Germany, and France to build brand awareness and capture market share.\n- **InstantPay Launch**: Introduced the InstantPay feature, a seamless payment solution, to attract new users and drive adoption.\n- **Social Media Amplification**: Enhanced content strategies across platforms to increase engagement and foster community growth.  \nThese efforts were supported by a $2 million marketing budget, strategically allocated to maximize ROI and align with our customer acquisition and revenue goals."
+  },
+  {
+    "id": 17,
+    "department": "marketing",
+    "file_name": "marketing_report_q1_2024.md",
+    "question": "What increase in ad spend is recommended for France in Q2 2024?",
+    "reference_answer": "Increase ad spend by 10%.",
+    "reference_context": "## Recommendations for Q2 2024\nBased on Q1 performance, we propose the following strategies for Q2 2024:  \n1. **Accelerate European Expansion**: Increase ad spend by 10% in France to overcome regulatory hurdles and meet acquisition targets.\n2. **Enhance InstantPay Adoption**: Introduce gamified incentives to drive repeat usage and sustain sign-up momentum.\n3. **Sustain Social Media Growth**: Invest in video content and influencer partnerships to maintain engagement growth."
+  },
+  {
+    "id": 18,
+    "department": "marketing",
+    "file_name": "marketing_report_q1_2024.md",
+    "question": "Which initiatives contributed to FinNova's measurable results in Q1 2024?",
+    "reference_answer": "European market entry, the InstantPay launch, and social media engagement.",
+    "reference_context": "## Conclusion\nQ1 2024 was a transformative quarter for FinNova, as we successfully laid the foundation for aggressive expansion and strengthened our customer acquisition channels. Our focus on European market entry, the InstantPay launch, and social media engagement delivered measurable results, positioning us for continued success in Q2. This report reflects our commitment to strategic growth and data-driven marketing as we build toward a landmark year."
+  },
+  {
+    "id": 19,
+    "department": "marketing",
+    "file_name": "marketing_report_q3_2024.md",
+    "question": "How many regional influencers were collaborated with during the Latin American expansion?",
+    "reference_answer": "25",
+    "reference_context": "### Latin American Expansion\n- **Merchant Partnerships**: Onboarded 15 merchants, contributing $1 million in revenue from co-branded promotions.\n- **Influencer Marketing**: Collaborated with 25 regional influencers, generating 500,000 impressions and 50,000 website visits."
+  }
+]

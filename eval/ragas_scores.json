@@ -1,0 +1,261 @@
+[
+  {
+    "id": 0,
+    "framework": "langchain",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
+  },
+  {
+    "id": 1,
+    "framework": "langchain",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
+  },
+  {
+    "id": 2,
+    "framework": "langchain",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
+  },
+  {
+    "id": 3,
+    "framework": "langchain",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
+  },
+  {
+    "id": 4,
+    "framework": "langchain",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
+  },
+  {
+    "id": 5,
+    "framework": "langchain",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
+  },
+  {
+    "id": 6,
+    "framework": "langchain",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 0.75
+  },
+  {
+    "id": 7,
+    "framework": "langchain",
+    "context_recall": 1.0,
+    "faithfulness": 0.5555555555555556,
+    "answer_accuracy": 0.5
+  },
+  {
+    "id": 8,
+    "framework": "langchain",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
+  },
+  {
+    "id": 9,
+    "framework": "langchain",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
+  },
+  {
+    "id": 10,
+    "framework": "langchain",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
+  },
+  {
+    "id": 11,
+    "framework": "langchain",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
+  },
+  {
+    "id": 12,
+    "framework": "langchain",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 0.75
+  },
+  {
+    "id": 13,
+    "framework": "langchain",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 0.75
+  },
+  {
+    "id": 14,
+    "framework": "langchain",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
+  },
+  {
+    "id": 15,
+    "framework": "langchain",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 0.75
+  },
+  {
+    "id": 16,
+    "framework": "langchain",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
+  },
+  {
+    "id": 17,
+    "framework": "langchain",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
+  },
+  {
+    "id": 18,
+    "framework": "langchain",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
+  },
+  {
+    "id": 19,
+    "framework": "langchain",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 0.75
+  },
+  {
+    "id": 0,
+    "framework": "llamaindex",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
+  },
+  {
+    "id": 1,
+    "framework": "llamaindex",
+    "context_recall": 0.0,
+    "faithfulness": 0.0,
+    "answer_accuracy": 0.0
+  },
+  {
+    "id": 2,
+    "framework": "llamaindex",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
+  },
+  {
+    "id": 3,
+    "framework": "llamaindex",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
+  },
+  {
+    "id": 4,
+    "framework": "llamaindex",
+    "context_recall": 1.0,
+    "faithfulness": 0.5,
+    "answer_accuracy": 0.0
+  },
+  {
+    "id": 5,
+    "framework": "llamaindex",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
+  },
+  {
+    "id": 6,
+    "framework": "llamaindex",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 0.75
+  },
+  {
+    "id": 7,
+    "framework": "llamaindex",
+    "context_recall": 1.0,
+    "faithfulness": 0.0,
+    "answer_accuracy": 0.5
+  },
+  {
+    "id": 8,
+    "framework": "llamaindex",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
+  },
+  {
+    "id": 9,
+    "framework": "llamaindex",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
+  },
+  {
+    "id": 10,
+    "framework": "llamaindex",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
+  },
+  {
+    "id": 11,
+    "framework": "llamaindex",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
+  },
+  {
+    "id": 12,
+    "framework": "llamaindex",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 0.75
+  },
+  {
+    "id": 13,
+    "framework": "llamaindex",
+    "context_recall": 0.6666666666666666,
+    "faithfulness": 1.0,
+    "answer_accuracy": 0.5
+  },
+  {
+    "id": 14,
+    "framework": "llamaindex",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
+  },
+  {
+    "id": 15,
+    "framework": "llamaindex",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
+  },
+  {
+    "id": 16,
+    "framework": "llamaindex",
+    "context_recall": 1.0,
+    "faithfulness": 1.0,
+    "answer_accuracy": 1.0
+  }
+]
