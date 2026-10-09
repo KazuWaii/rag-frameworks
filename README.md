@@ -3,6 +3,9 @@
 The same RAG pipeline over FinSolve's internal documents (from ds-rpc-01), built three times with LlamaIndex,
 LangChain and Haystack, to compare what each framework does by default.
 
+**Live demo**: [rag-frameworks on Streamlit Cloud](https://rag-frameworks-wcom9quq3pps7nfw6q44rp.streamlit.app/)
+(demo account `demo` / `finsolve`; see [Web demo](#web-demo)).
+
 ## Shared setup
 
 - Data: 9 Markdown files and 1 CSV (100 employee rows) in `data/`
